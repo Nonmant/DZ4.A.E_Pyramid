@@ -13,8 +13,9 @@ void parseFile(std::istream & input, std::ostream & output){
         input >> width >> height;
         blocks[width] = std::max(blocks[width], height);
     }
-    unsigned int sum = std::accumulate(std::begin(blocks), std::end(blocks), 0,
-                                       [](const std::size_t previous, const auto & p)
-                                       { return previous + p.second; });
+    unsigned long long sum = 0;
+    for(auto & block: blocks){
+        sum += block.second;
+    }
     output << sum;
 }

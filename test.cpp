@@ -33,15 +33,33 @@ TEST_CASE("test 1, file", "[simple]"){
             "5"
     );
 }
-/*
-TEST_CASE("test 2", ""){
+
+TEST_CASE("one block", ""){
     std::stringstream input(
-            ""
+            "5\n"
+            "4 1\n"
+            "4 2\n"
+            "4 3\n"
+            "4 5\n"
             );
     std::stringstream output;
     parseFile(input,output);
     REQUIRE(output.str() ==
-    ""
+    "5"
     );
 }
-*/
+
+TEST_CASE("longer test", ""){
+    std::stringstream input(
+            "5\n"
+            "4 1\n"
+            "3 1\n"
+            "2 1\n"
+            "1 1\n"
+            );
+    std::stringstream output;
+    parseFile(input,output);
+    REQUIRE(output.str() ==
+    "4"
+    );
+}
